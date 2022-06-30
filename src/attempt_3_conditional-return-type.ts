@@ -2,7 +2,7 @@ export {};
 
 type UserScalarFields = {
   id: number;
-  username: string;
+  email: string;
 };
 
 type OrgUnitScalarFields = {
@@ -21,20 +21,20 @@ type UserGetPayload<ActualFindUniqueArgs extends UserFindUniqueArgs> =
       ? { orgUnit: OrgUnitScalarFields }
       : {});
 
-function findOne<ActualFindUniqueArgs extends UserFindUniqueArgs>(
+function findUnique<ActualFindUniqueArgs extends UserFindUniqueArgs>(
   options: ActualFindUniqueArgs
 ): UserGetPayload<ActualFindUniqueArgs> {
   return {} as any;
 }
 
-const user = findOne({
+const user = findUnique({
   where: { id: 1 },
 });
 user.id;
 user.orgUnit;
 user.orgUnit.id;
 
-const userWithOrgUnit = findOne({
+const userWithOrgUnit = findUnique({
   where: { id: 1 },
   include: { orgUnit: true },
 });
@@ -42,7 +42,7 @@ userWithOrgUnit.id;
 userWithOrgUnit.orgUnit;
 userWithOrgUnit.orgUnit.id;
 
-findOne({
+findUnique({
   where: { id: 1 },
   include: { orgUnit: true },
   foo: "bar",
