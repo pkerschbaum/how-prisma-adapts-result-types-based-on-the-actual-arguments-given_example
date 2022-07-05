@@ -17,7 +17,7 @@ type UserFindUniqueArgs = {
 
 type UserGetPayload<ActualFindUniqueArgs extends UserFindUniqueArgs> =
   UserScalarFields &
-    (ActualFindUniqueArgs["include"] extends { orgUnit: true }
+    (ActualFindUniqueArgs extends { include: { orgUnit: true } }
       ? { orgUnit: OrgUnitScalarFields }
       : {});
 

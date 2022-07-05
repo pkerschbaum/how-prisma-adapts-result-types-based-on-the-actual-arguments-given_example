@@ -15,7 +15,9 @@ type UserFindUniqueArgs = {
   include?: { orgUnit?: boolean };
 };
 
-type UserGetPayload = UserScalarFields & { orgUnit?: OrgUnitScalarFields };
+type UserGetPayload = UserScalarFields & {
+  orgUnit?: OrgUnitScalarFields;
+};
 
 function findUnique<ActualFindUniqueArgs extends UserFindUniqueArgs>(
   options: ActualFindUniqueArgs
